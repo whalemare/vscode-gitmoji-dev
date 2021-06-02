@@ -29,15 +29,15 @@ export async function commit(logger: vscode.OutputChannel) {
     valueSelection: [emoji.label.length + 1, emoji.label.length + 1],
   });
 
-  const description = await vscode.window.showInputBox({
-    title: title,
-    prompt: emoji.detail,
-    placeHolder: strings.enterDescriptionCommitMessage,
-    value: ``,
-    ignoreFocusOut: true,
-  });
+  // const description = await vscode.window.showInputBox({
+  //   title: title,
+  //   prompt: emoji.detail,
+  //   placeHolder: strings.enterDescriptionCommitMessage,
+  //   value: ``,
+  //   ignoreFocusOut: true,
+  // });
 
-  const message = [title, description].filter(it => it).join("\n\n").trim().replace("\"", "\\\"");
+  const message = [title].filter(it => it).join("\n\n").trim().replace("\"", "\\\"");
   if (message){
     const cwd = await findCwd();
     if (!cwd) {
@@ -48,7 +48,6 @@ export async function commit(logger: vscode.OutputChannel) {
     }
     stage(cwd, logger);
     try {
-      const command = `git commit -m "${message}"`;
       const shellString = await execa('git', ['commit', '-m', `"${message}"`], {
         cwd: cwd,
         shell: vscode.env.shell,
