@@ -2,6 +2,9 @@
 	"name": "gitmoji-dev",
 	"displayName": "gitmoji-dev",
 	"description": "An emoji guide for your commit messages",
+	"author": {
+		"name": "whalemare"
+	},
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.56.0"
