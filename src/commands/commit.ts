@@ -46,7 +46,7 @@ export async function commit(logger: vscode.OutputChannel) {
     } else {
       logger.appendLine(`Find cwd: ${cwd}`);
     }
-    stage(cwd, logger);
+    await stage(cwd, logger);
     try {
       const shellString = await execa('git', ['commit', '-m', `"${message}"`], {
         cwd: cwd,
