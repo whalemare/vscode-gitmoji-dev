@@ -1,5 +1,6 @@
 import { exec } from 'shelljs';
 import * as vscode from 'vscode';
+import * as execa from 'execa';
 
 export async function stage(cwd: string, logger: vscode.OutputChannel): Promise<void> {
   const hasSmartCommitEnabled =
@@ -11,16 +12,16 @@ export async function stage(cwd: string, logger: vscode.OutputChannel): Promise<
     logger.appendLine(
       'Staging all files (enableSmartCommit enabled with nothing staged)'
     );
-    exec('git add .', {
+    await execa('git', ['add', '.'], {
       cwd
     });
   }
 }
 
 async function hasStagedFiles(cwd: string): Promise<boolean> {
-  const result = exec('git diff --name-only --cached', {
+  const result = execa('git', ['diff', '--name-only', '--cached'], {
     cwd
   });
 
-  return !!result;
+  return !!result && !!result.stdout;
 }

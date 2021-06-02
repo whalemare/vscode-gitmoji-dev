@@ -6,6 +6,7 @@ import {gitmojis} from './../assets/gitmoji.json';
 import {exec} from 'shelljs';
 import { cwd } from 'process';
 import { stage } from '../utils/stage';
+import * as execa from 'execa';
 
 export async function commit(logger: vscode.OutputChannel) {
   const emoji = await selectOneOf(strings.selectEmoji, gitmojis.map(it => ({
@@ -36,7 +37,7 @@ export async function commit(logger: vscode.OutputChannel) {
     ignoreFocusOut: true,
   });
 
-  const message = [title, description].filter(it => it).join("\n\n");
+  const message = [title, description].filter(it => it).join("\n\n").trim().replace("\"", "\\\"");
   if (message){
     const cwd = await findCwd();
     if (!cwd) {
@@ -46,9 +47,19 @@ export async function commit(logger: vscode.OutputChannel) {
       logger.appendLine(`Find cwd: ${cwd}`);
     }
     stage(cwd, logger);
-    exec(`git commit -a -m "${message}"`, {
-      cwd: cwd,
-    });
+    try {
+      const command = `git commit -m "${message}"`;
+      const shellString = await execa('git', ['commit', '-m', `"${message}"`], {
+        cwd: cwd,
+        shell: vscode.env.shell,
+        preferLocal: false,
+      });
+
+      logger.appendLine(`Result of execution command ${shellString.command}:\n\n${shellString.stdout}\n\n`);
+    }catch(e) {
+      logger.appendLine(`Error ${e}`);
+      vscode.window.showErrorMessage(e);
+    }
   } else {
     vscode.window.showWarningMessage(`${strings.errorEmptyMessage}: ${message}`);
   }

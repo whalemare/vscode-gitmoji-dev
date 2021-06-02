@@ -51,6 +51,7 @@
 		"webpack-cli": "^4.4.0"
 	},
 	"dependencies": {
+		"execa": "^5.0.1",
 		"shelljs": "^0.8.4"
 	}
 }
