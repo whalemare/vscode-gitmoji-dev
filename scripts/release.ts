@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { execSync } from 'child_process';
+import execa = require('execa');
 import { env } from 'process';
 import {version} from './../package.json';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -11,10 +12,10 @@ async function main() {
     throw new Error('Specify GITHUB_TOKEN environment variable at: https://github.com/settings/tokens');
   }
 
-  execSync('yarn changelog');
-  execSync(`git commit -a -m "🚀 Release v${version}"`);
-  execSync(`git tag -a v${version} -m "v${version}"`);
-  execSync('git push --follow-tags');
+  execa('yarn', ['changelog']);
+  execa(`git`, ['commit', '-a', '-m', `"🚀 Release v${version}"`]);
+  execa(`git`, [`tag`, `-a`, `v${version}`, `-m`, `v${version}`]);
+  execa('git', ['push', '--follow-tags']);
 
   github(
     {
