@@ -31,7 +31,7 @@ async function main() {
       if (err) {throw err;}
       console.log(result);
     },
-  );
+  )
 }
 
 void main();
