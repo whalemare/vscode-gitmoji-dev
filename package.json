@@ -5,6 +5,9 @@
 	"author": {
 		"name": "whalemare"
 	},
+	"repository": {
+		"url": "https://github.com/whalemare/vscode-gitmoji-dev"
+	},
 	"publisher": "whalemare",
 	"version": "0.0.1",
 	"engines": {
