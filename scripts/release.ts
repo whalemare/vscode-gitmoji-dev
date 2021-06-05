@@ -12,7 +12,7 @@ async function main() {
     throw new Error('Specify GITHUB_TOKEN environment variable at: https://github.com/settings/tokens');
   }
 
-  execa('yarn', ['changelog']);
+  execa('yarn', ['gitmoji-changelog']);
   execa(`git`, ['commit', '-a', '-m', `"🚀 Release v${version}"`]);
   execa(`git`, [`tag`, `-a`, `v${version}`, `-m`, `v${version}`]);
   execa('git', ['push', '--follow-tags']);
