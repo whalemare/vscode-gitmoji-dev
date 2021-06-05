@@ -13,7 +13,7 @@ async function main() {
   }
 
   await execa('yarn', ['gitmoji-changelog']);
-  await execa(`git`, ['commit', '-a', '-m', `"🚀 Release v${version}"`]);
+  await execa(`git`, ['commit', '-a', '-m', `🚀 Release v${version}`]);
   await execa(`git`, [`tag`, `-a`, `v${version}`, `-m`, `v${version}`]);
   await execa('git', ['push', '--follow-tags']);
 
