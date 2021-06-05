@@ -12,12 +12,12 @@ async function main() {
     throw new Error('Specify GITHUB_TOKEN environment variable at: https://github.com/settings/tokens');
   }
 
-  execa('yarn', ['gitmoji-changelog']);
-  execa(`git`, ['commit', '-a', '-m', `"🚀 Release v${version}"`]);
-  execa(`git`, [`tag`, `-a`, `v${version}`, `-m`, `v${version}`]);
-  execa('git', ['push', '--follow-tags']);
+  await execa('yarn', ['gitmoji-changelog']);
+  await execa(`git`, ['commit', '-a', '-m', `"🚀 Release v${version}"`]);
+  await execa(`git`, [`tag`, `-a`, `v${version}`, `-m`, `v${version}`]);
+  await execa('git', ['push', '--follow-tags']);
 
-  github(
+  await github(
     {
       tag_name: `v${version}`,
       name: `v${version}`,
@@ -31,7 +31,7 @@ async function main() {
       if (err) {throw err;}
       console.log(result);
     },
-  )
+  );
 }
 
 void main();
