@@ -5,6 +5,7 @@
 	"author": {
 		"name": "whalemare"
 	},
+	"publisher": "whalemare",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.56.0"
