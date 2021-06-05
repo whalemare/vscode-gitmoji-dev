@@ -4,12 +4,14 @@ import { commit } from './commands/commit';
 export function activate(context: vscode.ExtensionContext) {
 	const channel = vscode.window.createOutputChannel("gitmoji-dev");
 
-	let disposable = vscode.commands.registerCommand('gitmoji-dev.commit', () => {
-		// The code you place here will be executed every time your command is executed
-		commit(channel);
-	});
-
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(
+		vscode.commands.registerCommand('gitmoji-dev.commit', () => {
+			commit(channel, { mode: 'emoji' });
+		}),
+		vscode.commands.registerCommand('gitmoji-dev.commit-code', () => {
+			commit(channel, { mode: 'code' });
+		})
+	);
 }
 
 // this method is called when your extension is deactivated

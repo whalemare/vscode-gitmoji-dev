@@ -7,8 +7,13 @@ import {exec} from 'shelljs';
 import { cwd } from 'process';
 import { stage } from '../utils/stage';
 import * as execa from 'execa';
+import { replaceAll } from '../utils/replaceAll';
 
-export async function commit(logger: vscode.OutputChannel) {
+export type CommitProps = {
+  mode: "emoji" | "code"
+};
+
+export async function commit(logger: vscode.OutputChannel, {mode}: CommitProps) {
   const emoji = await selectOneOf(strings.selectEmoji, gitmojis.map(it => ({
     label: it.emoji,
     description: it.code,
@@ -20,31 +25,28 @@ export async function commit(logger: vscode.OutputChannel) {
     return;
   }
 
+  const value = `${mode === "emoji" ? emoji.label : emoji.description} `;
   const title = await vscode.window.showInputBox({
     title: `${emoji?.label} ${emoji.description}`,
     prompt: emoji.detail,
     placeHolder: strings.enterTitleCommitMessage,
-    value: `${emoji.label} `,
+    value: value,
     ignoreFocusOut: true,
-    valueSelection: [emoji.label.length + 1, emoji.label.length + 1],
-  });
+    valueSelection: [value.length, value.length],
+  }) || "";
 
-  // const description = await vscode.window.showInputBox({
-  //   title: title,
-  //   prompt: emoji.detail,
-  //   placeHolder: strings.enterDescriptionCommitMessage,
-  //   value: ``,
-  //   ignoreFocusOut: true,
-  // });
-
-  const message = [title].filter(it => it).join("\n\n").trim().replace("\"", "\\\"");
+  const message = replaceAll(
+    title.trim(),
+    "\"",
+    "\\\"",
+  );
   if (message){
     const cwd = await findCwd();
-    if (!cwd) {
+    if (cwd) {
+      logger.appendLine(`Find cwd: ${cwd}`);
+    } else {
       logger.appendLine("cwd not detected, close commitment");
       return;
-    } else {
-      logger.appendLine(`Find cwd: ${cwd}`);
     }
     await stage(cwd, logger);
     try {

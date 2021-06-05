@@ -17,14 +17,20 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:gitmoji-dev.commit"
+		"onCommand:gitmoji-dev.commit",
+		"onCommand:gitmoji-dev.commit-code"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "gitmoji-dev.commit",
-				"title": "Commit with emoji 😊",
+				"title": "Commit with gitmoji 😊",
+				"category": "Git"
+			},
+			{
+				"command": "gitmoji-dev.commit-code",
+				"title": "Commit with gitmoji :code:",
 				"category": "Git"
 			}
 		]

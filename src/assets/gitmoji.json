@@ -1,6 +1,38 @@
 {
   "gitmojis": [
     {
+      "emoji": "🐛",
+      "entity": "&#x1f41b;",
+      "code": ":bug:",
+      "description": "Fix a bug.",
+      "name": "bug",
+      "semver": "patch"
+    },
+    {
+      "emoji": "🩹",
+      "entity": "&#x1FA79;",
+      "code": ":adhesive_bandage:",
+      "description": "Simple fix for a non-critical issue.",
+      "name": "adhesive-bandage",
+      "semver": "patch"
+    },
+    {
+      "emoji": "✏️",
+      "entity": "&#59161;",
+      "code": ":pencil2:",
+      "description": "Fix typos.",
+      "name": "pencil2",
+      "semver": "patch"
+    },
+    {
+      "emoji": "✨",
+      "entity": "&#x2728;",
+      "code": ":sparkles:",
+      "description": "Introduce new features.",
+      "name": "sparkles",
+      "semver": "minor"
+    },
+    {
       "emoji": "🎨",
       "entity": "&#x1f3a8;",
       "code": ":art:",
@@ -25,28 +57,12 @@
       "semver": null
     },
     {
-      "emoji": "🐛",
-      "entity": "&#x1f41b;",
-      "code": ":bug:",
-      "description": "Fix a bug.",
-      "name": "bug",
-      "semver": "patch"
-    },
-    {
       "emoji": "🚑️",
       "entity": "&#128657;",
       "code": ":ambulance:",
       "description": "Critical hotfix.",
       "name": "ambulance",
       "semver": "patch"
-    },
-    {
-      "emoji": "✨",
-      "entity": "&#x2728;",
-      "code": ":sparkles:",
-      "description": "Introduce new features.",
-      "name": "sparkles",
-      "semver": "minor"
     },
     {
       "emoji": "📝",
@@ -214,14 +230,6 @@
       "code": ":globe_with_meridians:",
       "description": "Internationalization and localization.",
       "name": "globe-with-meridians",
-      "semver": "patch"
-    },
-    {
-      "emoji": "✏️",
-      "entity": "&#59161;",
-      "code": ":pencil2:",
-      "description": "Fix typos.",
-      "name": "pencil2",
       "semver": "patch"
     },
     {
@@ -486,14 +494,6 @@
       "code": ":passport_control:",
       "description": "Work on code related to authorization, roles and permissions.",
       "name": "passport-control",
-      "semver": "patch"
-    },
-    {
-      "emoji": "🩹",
-      "entity": "&#x1FA79;",
-      "code": ":adhesive_bandage:",
-      "description": "Simple fix for a non-critical issue.",
-      "name": "adhesive-bandage",
       "semver": "patch"
     },
     {
