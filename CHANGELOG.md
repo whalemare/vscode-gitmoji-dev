@@ -5,6 +5,8 @@
 
 ### Miscellaneous
 
+-  Update version [[969541c](https://github.com/whalemare/vscode-gitmoji-dev/commit/969541c68209697692d35ae188e987baae82cb4c)]
+- 🚀 Release v0.0.2&quot; [[57de4be](https://github.com/whalemare/vscode-gitmoji-dev/commit/57de4becb27119682d21d268d95de19565507060)]
 - 🚀 Release v0.0.2&quot; [[181efe9](https://github.com/whalemare/vscode-gitmoji-dev/commit/181efe926c7eaa9bd5c67e463645b0009e0f8d29)]
 -  Remove changelog [[9132558](https://github.com/whalemare/vscode-gitmoji-dev/commit/9132558ee1a41bbc748b84feb495a74ae76e1a0d)]
 -  Use execa [[3bf105c](https://github.com/whalemare/vscode-gitmoji-dev/commit/3bf105c003a0b74760e33189ff8e5c65bb32b7da)]
