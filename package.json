@@ -2,6 +2,8 @@
 	"name": "gitmoji-dev",
 	"displayName": "Gitmoji Dev",
 	"description": "An emoji guide for your commit messages!",
+	"license": "MIT",
+	"homepage": "https://github.com/whalemare/vscode-gitmoji-dev/blob/master/README.md",
 	"author": {
 		"name": "whalemare"
 	},
@@ -12,8 +14,18 @@
 	"publisher": "whalemare",
 	"version": "1.0.2",
 	"engines": {
-		"vscode": "^1.56.0"
+		"vscode": "^1.40.0"
 	},
+	"keywords": [
+		"gitmoji",
+		"git",
+		"emoji",
+		"commit",
+		"messages",
+		"gitmoji-dev",
+		"gitmojidev",
+		"whalemare"
+	],
 	"categories": [
 		"Other"
 	],
