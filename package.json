@@ -9,7 +9,7 @@
 		"url": "https://github.com/whalemare/vscode-gitmoji-dev"
 	},
 	"publisher": "whalemare",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.56.0"
 	},
@@ -44,7 +44,9 @@
 		"test-watch": "tsc -watch -p ./",
 		"pretest": "yarn run test-compile && yarn run lint",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"changelog": "",
+		"release": "yarn ts-node ./scripts/release.ts"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",
@@ -55,9 +57,12 @@
 		"@typescript-eslint/eslint-plugin": "^4.14.1",
 		"@typescript-eslint/parser": "^4.14.1",
 		"eslint": "^7.19.0",
+		"gh-release": "^6.0.0",
+		"gitmoji-changelog": "^2.2.0",
 		"glob": "^7.1.6",
 		"mocha": "^8.2.1",
 		"ts-loader": "^8.0.14",
+		"ts-node": "^10.0.0",
 		"typescript": "^4.1.3",
 		"vsce": "^1.92.0",
 		"vscode-test": "^1.5.0",
